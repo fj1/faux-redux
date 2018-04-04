@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {PropTypes} from 'prop-types';
 
 class Greeting extends Component {
   handleInputChange = e => {
@@ -13,10 +14,14 @@ class Greeting extends Component {
         <h2>My name is 
             <input onChange={this.handleInputChange} />
         </h2>
-        <h2>Nice to meet you!</h2>
+        <h2>{`Nice to meet you, ${this.context.name}!`}</h2>
       </div>
     )
   }
+}
+
+Greeting.contextTypes = {
+  name: PropTypes.string
 }
 
 export default Greeting
