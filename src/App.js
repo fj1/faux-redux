@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Greeting from './Greeting';
-import Provider from './Provider';
+import Provider from './not-redux/Provider';
 
 class App extends Component {
   render() {

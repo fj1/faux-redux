@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 
+import connect from './not-redux/connect';
+
 class Greeting extends Component {
   handleInputChange = e => {
     console.log(e.currentTarget.value);
@@ -24,4 +26,6 @@ Greeting.contextTypes = {
   name: PropTypes.string
 }
 
-export default Greeting
+const ConnectedGreeting = connect(Greeting)
+
+export default ConnectedGreeting
