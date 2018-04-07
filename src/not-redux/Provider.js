@@ -4,8 +4,12 @@ import {PropTypes} from 'prop-types'
 class Provider extends Component {
   getChildContext() {
     return {
-      name: 'Jean-Luc'
+      store: this.store,
     }
+  }
+
+  store = {
+    name: 'Spock'
   }
   
   render() {
@@ -17,7 +21,9 @@ class Provider extends Component {
 }
 
 Provider.childContextTypes = {
-  name: PropTypes.string
+  store: PropTypes.shape({
+    name: PropTypes.string
+  })
 }
 
 export default Provider
