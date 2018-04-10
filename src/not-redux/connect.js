@@ -4,17 +4,13 @@ import PropTypes from 'prop-types'
 // HOC https://reactjs.org/docs/higher-order-components.html
 
 // takes in a component
-const connect = (WrappedComponent, action) => {
+const connect = (mapStateToProps, mapDispatchToProps, WrappedComponent) => {
 
   // return another component
   return class extends Component {
     static contextTypes = {
       store: PropTypes.shape({
         name: PropTypes.string
-      }),
-      storeActions: PropTypes.shape({
-        getName: PropTypes.func,
-        setName: PropTypes.func
       })
     }
 
@@ -23,7 +19,7 @@ const connect = (WrappedComponent, action) => {
     : `Connected(${WrappedComponent.name})`
 
     render() {
-      return <WrappedComponent store={this.context.store} storeActions={this.context.storeActions} />
+      return <WrappedComponent {...mapStateToProps(this.context.store)} />
     }
   }
 }

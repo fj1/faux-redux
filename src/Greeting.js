@@ -4,20 +4,13 @@ import {PropTypes} from 'prop-types';
 import connect from './not-redux/connect';
 
 class Greeting extends Component {
-  componentDidMount() { 
-    this.props.storeActions.getName();
-  }
-  
-  componentWillReceiveProps() {
-    this.props.storeActions.getName();
-  }
 
   handleInputChange = e => {
-    this.props.storeActions.setName(e.currentTarget.value);
+    console.log(e.currentTarget.value);
   }
 
   render() {
-    const {name} = this.props.store
+    const {name} = this.props
 
     return (
       <div className="App">
@@ -32,6 +25,10 @@ class Greeting extends Component {
   }
 }
 
-const ConnectedGreeting = connect(Greeting)
+const mapStateToProps = state => ({name: state.name});
+
+const mapDispatchToProps = () => {}
+
+const ConnectedGreeting = connect(mapStateToProps, mapDispatchToProps, Greeting)
 
 export default ConnectedGreeting
