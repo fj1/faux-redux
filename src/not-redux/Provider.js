@@ -5,11 +5,17 @@ class Provider extends Component {
   getChildContext() {
     return {
       store: this.store,
+      storeActions: this.storeActions
     }
   }
 
   store = {
     name: 'Spock'
+  }
+
+  storeActions = {
+    getName: () => this.store.name,
+    setName: name => this.store = {...this.store, name}
   }
   
   render() {
@@ -23,6 +29,10 @@ class Provider extends Component {
 Provider.childContextTypes = {
   store: PropTypes.shape({
     name: PropTypes.string
+  }),
+  storeActions: PropTypes.shape({
+    getName: PropTypes.func,
+    setName: PropTypes.func
   })
 }
 

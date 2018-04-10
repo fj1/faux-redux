@@ -4,16 +4,16 @@ import {PropTypes} from 'prop-types';
 import connect from './not-redux/connect';
 
 class Greeting extends Component {
-  handleInputChange = e => {
-    this.props.storeActions.setName(e.currentTarget.value);
-  }
-
   componentDidMount() { 
     this.props.storeActions.getName();
   }
   
   componentWillReceiveProps() {
     this.props.storeActions.getName();
+  }
+
+  handleInputChange = e => {
+    this.props.storeActions.setName(e.currentTarget.value);
   }
 
   render() {
