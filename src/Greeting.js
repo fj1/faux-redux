@@ -32,12 +32,6 @@ class Greeting extends Component {
   }
 }
 
-Greeting.contextTypes = {
-  store: PropTypes.shape({
-    name: PropTypes.string
-  })
-}
-
 const ConnectedGreeting = connect(Greeting)
 
 export default ConnectedGreeting

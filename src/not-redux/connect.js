@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 // HOC https://reactjs.org/docs/higher-order-components.html
 
@@ -9,24 +10,25 @@ const connect = (WrappedComponent, action) => {
   return class extends Component {
     constructor(props) {
       super(props)
-      this.state = {
-        store: {
-          name: ''
-        }
-      }
+    }
+
+    static contextTypes = {
+      store: PropTypes.shape({
+        name: PropTypes.string
+      })
     }
 
     storeActions = {
-      getName: () => {return this.state.store.name},
+      getName: () => {return this.context.store.name},
       setName: name => {this.setState({store: {name}})}
     }
-
+    
     static displayName = WrappedComponent.displayName 
-      ? `Connected(${WrappedComponent.displayName})` 
-      : `Connected(${WrappedComponent.name})`
+    ? `Connected(${WrappedComponent.displayName})` 
+    : `Connected(${WrappedComponent.name})`
 
     render() {
-      return <WrappedComponent store={this.state.store} storeActions={this.storeActions} />
+      return <WrappedComponent store={this.context.store} storeActions={this.storeActions} />
     }
   }
 }
