@@ -4,12 +4,8 @@ import {PropTypes} from 'prop-types'
 class Provider extends Component {
   getChildContext() {
     return {
-      store: this.store
+      store: this.props.store
     }
-  }
-
-  store = {
-    name: 'Spock'
   }
   
   render() {
