@@ -5,6 +5,7 @@ class Provider extends Component {
   getChildContext() {
     return {
       store: this.props.store
+      // getState: this.props.func
     }
   }
   
@@ -18,7 +19,8 @@ class Provider extends Component {
 
 Provider.childContextTypes = {
   store: PropTypes.shape({
-    name: PropTypes.string
+    name: PropTypes.string,
+    // getState: PropTypes.func
   }),
 }
 

@@ -19,7 +19,12 @@ const connect = (mapStateToProps, mapDispatchToProps, WrappedComponent) => {
     : `Connected(${WrappedComponent.name})`
 
     render() {
-      return <WrappedComponent {...mapStateToProps(this.context.store.getState())} />
+      return (
+        <WrappedComponent 
+          {...mapStateToProps(this.context.store.getState())}
+          {...mapDispatchToProps} 
+        />
+      )
     }
   }
 }

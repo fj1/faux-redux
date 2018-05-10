@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
 
 import connect from './not-redux/connect';
 
@@ -7,6 +6,7 @@ class Greeting extends Component {
 
   handleInputChange = e => {
     console.log(e.currentTarget.value);
+    this.props.onNameChange(e.currentTarget.value);
   }
 
   render() {
@@ -25,9 +25,17 @@ class Greeting extends Component {
   }
 }
 
-const mapStateToProps = state => ({name: state.name});
+const mapStateToProps = state => {
+  return {name: state.name}
+};
 
-const mapDispatchToProps = () => {}
+const mapDispatchToProps = dispatch => {
+  return {
+    onNameChange: name => {
+      dispatch({name});
+    }
+  }
+}
 
 const ConnectedGreeting = connect(mapStateToProps, mapDispatchToProps, Greeting)
 
