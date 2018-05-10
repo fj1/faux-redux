@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // HOC https://reactjs.org/docs/higher-order-components.html
 
 // takes in a component
-const connect = (mapStateToProps, mapDispatchToProps, WrappedComponent) => {
+const connect = (mapStateToProps, mapDispatchToProps = () => {}, WrappedComponent) => {
 
   // return another component
   return class extends Component {
@@ -22,7 +22,7 @@ const connect = (mapStateToProps, mapDispatchToProps, WrappedComponent) => {
       return (
         <WrappedComponent 
           {...mapStateToProps(this.context.store.getState())}
-          {...mapDispatchToProps} 
+          {...mapDispatchToProps(this.context.store.dispatch)} 
         />
       )
     }

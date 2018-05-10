@@ -26,7 +26,7 @@ class Greeting extends Component {
 }
 
 const mapStateToProps = state => {
-  return {name: state.name}
+  return {name: state.app.name}
 };
 
 const mapDispatchToProps = dispatch => {

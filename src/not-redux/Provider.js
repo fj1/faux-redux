@@ -5,7 +5,6 @@ class Provider extends Component {
   getChildContext() {
     return {
       store: this.props.store
-      // getState: this.props.func
     }
   }
   

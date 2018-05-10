@@ -6,7 +6,9 @@ import Greeting from './Greeting';
 import Provider from './not-redux/Provider';
 import createStore from './not-redux/createStore';
 
-const store = createStore();
+const store = createStore({
+  app: appReducer,
+});
 
 class App extends Component {
   render() {
