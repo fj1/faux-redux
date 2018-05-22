@@ -19,7 +19,6 @@ class Provider extends Component {
 Provider.childContextTypes = {
   store: PropTypes.shape({
     name: PropTypes.string,
-    // getState: PropTypes.func
   }),
 }
 

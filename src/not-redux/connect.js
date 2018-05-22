@@ -14,6 +14,20 @@ const connect = (mapStateToProps, mapDispatchToProps = () => {}, WrappedComponen
       })
     }
 
+    componentDidMount() {
+      const {store} = this.context;
+      // observer pattern
+      this.unsubscribe = store.subscribe(this.handleChange);
+    }
+
+    componentWillUnmount() {
+      this.unsubscribe();
+    }
+
+    handleChange = () => {
+      this.forceUpdate();
+    }
+
     static displayName = WrappedComponent.displayName 
     ? `Connected(${WrappedComponent.displayName})` 
     : `Connected(${WrappedComponent.name})`
