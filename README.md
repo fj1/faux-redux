@@ -1,5 +1,5 @@
 # faux-redux
-Exercise to build a mock version of redux for fun and as a learning opportunity. Affectionately also known as fauxdux.
+Exercise to build a version of redux for fun and as a learning opportunity. Affectionately also known as fauxdux.
 
 Many thanks to [Chris](https://github.com/chrismiceli) for the inspiration and for pair-programming with me.
 
@@ -15,7 +15,7 @@ The goal was to have our own implementation of Redux that would update when an u
 
 🔶 Created the Greeting component with only some text and an input box.
 
-🔶 Created the Provider component, and hooked up Greeting with Provider using [React Context](https://reactjs.org/docs/context.html) only.
+🔶 Created the Provider component, and hooked up Greeting with Provider using [React Context v15](https://reactjs.org/docs/context.html) only.
 
   * Notice that the Provider component wraps the App component in App.js.
   
@@ -79,9 +79,9 @@ The goal was to have our own implementation of Redux that would update when an u
 
     * Add an array of subscribers to the Store class.
 
-    * Add the `subscribers()` function. This takes in the `handleChangeFunction()` function. .......
+    * Add the `subscribers()` function. This takes in the `handleChangeFunction()` function. It updates the list of subscribers. It returns an unsubscribe function, which allows the subscriber to unsubscribe when the connect HOC is unmounted. 
 
-    * Add the `notifySubscribers()` function, which iterates through the array of subscribers and calls the `subsribers()` on each of them. .......
+    * Add the `notifySubscribers()` function, which iterates through the array of subscribers and calls the `subscribers()` on each of them. The subscriber's function is the `handleChange()` that is on the connect HOC.
 
     * Add `this.notifySubscribers()` to the end of the `dispatch()` function. This is so that when the state is updated the subscribers find out about the change.
 
