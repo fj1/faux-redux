@@ -1,5 +1,5 @@
 # faux-redux
-Exercise to build a version of redux for fun and as a learning opportunity. Affectionately also known as fauxdux.
+Exercise to build a version of redux for fun and as a learning opportunity. Affectionately also known as faux-dux.
 
 Many thanks to [Chris](https://github.com/chrismiceli) for the inspiration and for pair-programming with me.
 
