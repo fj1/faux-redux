@@ -77,11 +77,11 @@ The goal was to have our own implementation of Redux that would update when an u
 
   * Implement the subscribers in createStore.js:
 
-    * Add an array of subscribers to the Store class.
+    * Add an array of subscribers to the Store class. This `subscribers` is an array of `handleChange` functions. 
 
-    * Add the `subscribers()` function. This takes in the `handleChangeFunction()` function. It updates the list of subscribers. It returns an unsubscribe function, which allows the subscriber to unsubscribe when the connect HOC is unmounted. 
+    * Add the `subscribe()` function. This takes in the `handleChange()` function. It updates the list of subscribers. It returns an unsubscribe function, which allows the subscriber to unsubscribe when the connect HOC is unmounted. 
 
-    * Add the `notifySubscribers()` function, which iterates through the array of subscribers and calls the `subscribers()` on each of them. The subscriber's function is the `handleChange()` that is on the connect HOC.
+    * Add the `notifySubscribers()` function, which iterates through the array of subscribers. Remember that `subscribers` is an array of `handleChange()` functions. So, while iterating, `handleChange()` is called on each connected HOC that is subscribed.
 
     * Add `this.notifySubscribers()` to the end of the `dispatch()` function. This is so that when the state is updated the subscribers find out about the change.
 
@@ -89,7 +89,9 @@ The goal was to have our own implementation of Redux that would update when an u
 
 🔶 In review:
 
-  * The Provider allows the store to be available via context, and connect wraps the Greeting component with an HOC. Connect also gives mapStateToProps and mapDispatchToProps to the Greeting component.
+  * The Provider allows the store to be available via context. 
+  
+  * Connect wraps the Greeting component with an HOC. Connect also gives mapStateToProps and mapDispatchToProps to the Greeting component.
 
   * At first, the store is initialized with the action `__FAUX_REDUX_INIT__`. Since there is no state yet, the default name is Spock.
 
