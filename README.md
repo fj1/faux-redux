@@ -21,7 +21,7 @@ The goal was to have our own implementation of Redux that would update when an u
   
   * As the parent component, Provider needs to define get the `ChildContext()` function (which returns an object that is the data we want) and the static prop `childContextTypes` (that defines the type of the data we will be passing).
 
-  * As the grandchild component, Greeting needs the static prop `contextTypes` to define the data type. Then, the data is available as `this.context.<data>`.
+  * As the grandchild component, Greeting needs the static prop `contextTypes` to define the data type. Then, the data is available as `this.context.<data>`. Note that this code is eventually removed.
 
   * At this point, if we hardcoded the name 'Kirk' in the Provider's store.name, Greeting now shows the name Kirk in the UI. 🎉
 
@@ -89,8 +89,14 @@ The goal was to have our own implementation of Redux that would update when an u
 
 🔶 In review:
 
-  * At first, the store is initialized with the action `__FAUX_REDUX_INIT__`. The Provider allows the store to be available via context, and connect wraps the Greeting component and also gives mapStateToProps and mapDispatchToProps to the Greeting component. Since there is no state yet, the default name is Spock.
+  * The Provider allows the store to be available via context, and connect wraps the Greeting component with an HOC. Connect also gives mapStateToProps and mapDispatchToProps to the Greeting component.
 
-  * The user types their name into the input box. `handleInputChange()` is called with the new name, and it dispatches `onNameChange()`. Then, `dispatch()` calls the appReducer. The reducer takes the new name and returns the new state. `dispatch()` then sets the Store's state as the new state and calls `notifySubscribers()`.
+  * At first, the store is initialized with the action `__FAUX_REDUX_INIT__`. Since there is no state yet, the default name is Spock.
+
+  * The user types their name into the input box. `handleInputChange()` is called with the new name, and it dispatches `onNameChange()`. 
+
+  * Then, `dispatch()` calls the appReducer. The reducer takes the new name and returns the new state. 
+  
+  * `dispatch()` then sets the Store's state as the new state and calls `notifySubscribers()`.
 
   * All the subscribers are updated with the new state. The component is forced to update, thus rerendering the UI and showing the updated name.
