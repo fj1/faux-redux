@@ -18,8 +18,13 @@ class Store {
       newState[reducer] = this.reducersObject[reducer](this.state[reducer], action);
     });
 
-    // could add a logger here, like redux, to log the action, this.state, and newState
-    
+    // logger
+    console.group(`dispatch ${action.type}`);
+    console.log(`action object: ${JSON.stringify(action)}`);
+    console.log(`previous state: ${JSON.stringify(this.state)}`);
+    console.log(`next state: ${JSON.stringify(newState)}`);
+    console.groupEnd();
+
     this.state = newState;
     this.notifySubscribers();
   };
