@@ -19,9 +19,9 @@ The goal was to have our own implementation of Redux that would update when an u
 
   * Notice that the Provider component wraps the App component in App.js.
   
-  * As the parent component, Provider needs to define get the `ChildContext()` function (which returns an object that is the data we want) and the static prop `childContextTypes` (that defines the type of the data we will be passing).
+  * As the parent component, Provider needs to define `getChildContext()` function (which returns an object that is the data we want) and the static prop `childContextTypes` (that defines the type of the data we will be passing).
 
-  * As the grandchild component, Greeting needs the static prop `contextTypes` to define the data type. Then, the data is available as `this.context.<data>`. Note that this code is eventually removed.
+  * As the grandchild component, Greeting needs the static prop `contextTypes` to define the data type. Then, the data is available as `this.context.<data>`. Note that this code was eventually removed.
 
   * At this point, if we hardcoded the name 'Kirk' in the Provider's store.name, Greeting now shows the name Kirk in the UI. 🎉
 
